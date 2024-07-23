@@ -6,10 +6,7 @@ import { Link } from 'react-router-dom';
 import { logout } from '../app/actions';
 import { getUserDetails } from '../services/getUserDetails';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import {
-    faEnvelopeOpen,
-    faUserCircle,
-} from "@fortawesome/free-regular-svg-icons"
+import { faUserCircle } from "@fortawesome/free-regular-svg-icons"
 import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons/faRightFromBracket'; 
 
 

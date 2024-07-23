@@ -1,7 +1,9 @@
+import { loginFail,loginSuccess } from "../app/actions";
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
+const auth = (username , password) =>  async(dispatch) =>{
 
-async function auth(username , password) {
+  try{
     const response = await fetch(`${BASE_URL}/user/login`, {
         method: 'POST',
         headers: {
@@ -16,9 +18,23 @@ async function auth(username , password) {
       console.log('API response:', data);
       
       if (response.ok) {
-        return { success: true, token: data.body.token };
+        console.log('Login successful');
+        // return { success: true, token: data.body.token };
+        localStorage.setItem('token', data.body.token); // Stocker le token dans le localStorage
+        dispatch(loginSuccess(data.body.token));
+       
+        
       } else {
-        return { success: false, message: data.message };
+        console.log('Login failed');
+        dispatch(loginFail(data.message));
+       
+       
+      }
+
+    } catch (error) {
+      console.log('Login faileddd');
+      dispatch(loginFail('An error occurred'));
+      
     }
 
    

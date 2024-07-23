@@ -1,7 +1,9 @@
 // ACTIONS DU STORE 
 
 
+// types d'actions
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const LOGOUT = 'LOGOUT';
 
 export const  USER_DETAILS_SUCCESS = 'USER_DETAILS_SUCCESS'
@@ -12,9 +14,15 @@ export const USER_UPDATE_FAIL = "USER_UPDATE_FAIL"
 
 
 
+// action creators : 
 export const loginSuccess = (token) => ({
   type: LOGIN_SUCCESS,
   payload: token,
+});
+
+export const loginFail = (error) => ({
+    type: LOGIN_FAIL,
+    payload: error,
 });
 
 export const logout = () => ({

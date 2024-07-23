@@ -30,27 +30,33 @@ function signIn() {
     
         try {
 
-            // Appel à la fonction auth pour obtenir le token
-            const result = await auth(username, password);
-            setLoading(false);
+            // // Appel à la fonction auth pour obtenir le token
+            // const result = await auth(username, password);
+            // setLoading(false);
 
-            // verifier sil ya token
-            console.log('Auth result:', result);  
+            // // verifier sil ya token
+            // console.log('Auth result:', result);  
     
-            if (result.success) {
+            // if (result.success) {
 
-                // Stocke le token dans localStorage pour persistance : pour maintenir l'utilisateur connecté même après un rafraîchissement de la page.
-                localStorage.setItem('token', result.token);
+            //     // Stocke le token dans localStorage pour persistance : pour maintenir l'utilisateur connecté même après un rafraîchissement de la page.
+            //     localStorage.setItem('token', result.token);
 
-                // Met à jour l'état d'authentification avec Redux
-                dispatch(loginSuccess(result.token));
+            //     // Met à jour l'état d'authentification avec Redux
+            //     dispatch(loginSuccess(result.token));
 
-                // Redirige vers la page utilisateur
-                navigate('/user');
+            //     // Redirige vers la page utilisateur
+            //     navigate('/user');
 
-            } else {
-                setError(result.message || 'Invalid username or password');
-            }
+            // } else {
+            //     setError(result.message || 'Invalid username or password');
+            // }
+
+            // dipatch l'etat dans le store 
+            await dispatch(auth(username, password));
+
+            // Redirige vers la page utilisateur
+            navigate('/user');
 
         } catch (error) {
             setLoading(false);

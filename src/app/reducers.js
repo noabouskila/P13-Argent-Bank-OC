@@ -4,6 +4,7 @@
 
 import{
     LOGIN_SUCCESS,
+    LOGIN_FAIL,
     LOGOUT , 
 
     USER_DETAILS_FAIL , 
@@ -25,36 +26,47 @@ const initialStateAuth = {
 
 // reducer d'authentification
 const authReducer = (state = initialStateAuth, action) => {
-  switch (action.type) {
-    case LOGIN_SUCCESS:
-      return {
-        ...state,
-        isAuthenticated: true,
-        token: action.payload,
-      };
-    case LOGOUT:
-      return {
-        ...state,
-        isAuthenticated: false,
-        token: null,
-      };
-    //   verifier si le token est dans le localstorage
-    case CHECK_AUTH:
-    return {
-        ...state,
-        isAuthenticated: !!action.payload,
-        token: action.payload,
-    };
-    default:
-      return state;
-  }
+    switch (action.type) {
+        case LOGIN_SUCCESS:
+            return {
+                ...state,
+                isAuthenticated: true,
+                token: action.payload,
+            };
+        case LOGIN_FAIL:
+            return {
+                ...state,
+                isAuthenticated: false,
+                // token: action.payload,
+                token : null
+            };
+        case LOGOUT:
+            return {
+                ...state,
+                isAuthenticated: false,
+                token: null,
+            };
+
+        //  verifier si le token est dans le localstorage
+
+        // !!action.payload renvoie l'authentificatation a TRUE : si valeur veridique 
+        // !!action.payload renvoie l'authentificatation a FALSE : si valeur FAUSSE (0 ou null ou undefined)
+        case CHECK_AUTH:
+            return {
+                ...state,
+                isAuthenticated: !!action.payload,
+                token: action.payload,
+            };
+        default:
+        return state;
+    }
 };
 
 
 const initialStateUser  = {
     user: {},
     error: null,
-  };
+};
 
 // reducer de recuperation de donnees de profil de user
 export const userDetailsReducer = (state = initialStateUser, action) => {
@@ -84,11 +96,13 @@ export const userUpdateReducer = (state = {}, action) => {
             return { 
                 ...state,
                 success: true, 
-                user: action.payload };
+                user: action.payload
+            };
         case USER_UPDATE_FAIL:
             return { 
                 ...state,
-                error: action.payload };
+                error: action.payload 
+            };
         default:
             return state;
     }
