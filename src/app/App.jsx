@@ -6,7 +6,8 @@ import SignIn from '../pages/SignIn';
 import PrivateRoute from '../PrivateRoute';
 import {  useState, useEffect } from 'react';
 import { useDispatch ,useSelector } from 'react-redux';
-import { checkAuth } from './actions';
+// import { checkAuth } from './actions';
+import { checkAuth } from './authSlice';
 
 const App = () => {
 
@@ -32,7 +33,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/signin" element={<SignIn />} />
-        <Route path="/user" element={< PrivateRoute element={<User/>}  isAuthenticated={isAuthenticated} />} />} />
+        <Route path="/user" element={< PrivateRoute element={<User/>}  isAuthenticated={isAuthenticated} />} /> 
       </Routes>
     </Router>
   );

@@ -3,7 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import ArgentBankLogo from "../assets/argentBankLogo.png"
 import { Link } from 'react-router-dom';
-import { logout } from '../app/actions';
+// import { logout } from '../app/actions';
+import { logout } from '../app/authSlice';
+
 import { getUserDetails } from '../services/getUserDetails';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faUserCircle } from "@fortawesome/free-regular-svg-icons"

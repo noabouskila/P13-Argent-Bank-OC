@@ -1,4 +1,6 @@
-import { userUpdateSuccess, userUpdateFail } from '../app/actions';
+// import { userUpdateSuccess, userUpdateFail } from '../app/actions';
+import { userUpdateFail , userUpdateSuccess} from "../app/userUpdateSlice";
+
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export const updateUserDetails = (token , firstName, lastName) => {

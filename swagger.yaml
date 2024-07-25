@@ -48,6 +48,7 @@ basePath: /api/v1
 schemes:
   - http
 paths:
+#############user/login#################
   /user/login:
     post:
       tags:
@@ -72,6 +73,7 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
+#############user/signup#################
   /user/signup:
     post:
       tags:
@@ -96,6 +98,7 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
+#############user/profile#################
   /user/profile:
     post:
       security:
@@ -151,8 +154,10 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
+  paths:
+  #############user/profile/transactions#################
   /user/profile/transactions:
-    post:
+    get:
       security:
         - Bearer: []
       tags:
@@ -164,7 +169,7 @@ paths:
           name: Authorization
           description: Attach Bearer JWT token
           required: true
-          type: string  # Ajout du type
+          type: string
       produces:
         - application/json
       responses:
@@ -184,8 +189,9 @@ paths:
           description: Not Found
         '500':
           description: Internal Server Error
+#############user/profile/transactions#################
   /user/profile/transactions/{transactionId}:
-    post:
+    get:
       security:
         - Bearer: []
       tags:
@@ -197,12 +203,12 @@ paths:
           name: Authorization
           description: Attach Bearer JWT token
           required: true
-          type: string  # Ajout du type
+          type: string
         - in: path
           name: transactionId
           description: ID of the transaction
           required: true
-          type: string  # Ajout du type
+          type: string
       produces:
         - application/json
       responses:
@@ -430,4 +436,3 @@ definitions:
         type: string
       note:
         type: string
-

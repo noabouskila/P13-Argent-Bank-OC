@@ -1,4 +1,6 @@
-import { loginFail,loginSuccess } from "../app/actions";
+// import { loginFail,loginSuccess } from "../app/actions";
+import { loginFail, loginSuccess } from "../app/authSlice";
+
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const auth = (username , password) =>  async(dispatch) =>{
