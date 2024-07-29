@@ -14,11 +14,11 @@
 # http://localhost:3001/api/v1/user/profile/   :  post et put
 
 # ENDPOINT POUR LES  TRANSACTIONS D UN USER  DU MOIS 
-# http://localhost:3001/api/v1/user/profile/transactions/    : post 
+# http://localhost:3001/api/v1/user/profile/transactions/    : GET
 
 
 # ENDPOINT POUR LE DETAILS DES TRANSACTIONS D UN USER 
-# http://localhost:3001/api/v1/user/profile/transactions/{transactionId}    post , put , patch , delete 
+# http://localhost:3001/api/v1/user/profile/transactions/{transactionId}    GET , put , patch , delete 
 
 
 
@@ -80,14 +80,14 @@ paths:
         - User Module
       summary: Signup
       description: API for Signup
-      parameters:
+      parameters: #ndique les paramètres que cette opération accepte
         - in: body
           name: body
           description: Signup Payload
-          required: true
+          required: true  #  explique si le parametre obligatoire ou non 
           schema:
-            $ref: '#/definitions/User'
-      produces:
+            $ref: '#/definitions/User' #referencé sous une section définie comme Login
+      produces:  # Indique le type de réponse que cette opération renvoie
         - application/json
       responses:
         '200':
@@ -111,7 +111,7 @@ paths:
         - in: header
           name: Authorization
           description: Attach Bearer JWT token
-          required: true
+          required: true #  explique si le parametre obligatoire ou non 
           type: string  # Ajout du type
       produces:
         - application/json
@@ -343,12 +343,12 @@ paths:
           description: Not Found
         '500':
           description: Internal Server Error
-securityDefinitions:
+securityDefinitions: #mécanismes de sécurité utilisés par l'API.
   Bearer:
     type: apiKey
     name: Authorization
     in: header
-definitions:
+definitions: #contientt les différentes définitions d'objets utilisés dans l'API.
   User:
     properties:
       email:
@@ -363,7 +363,7 @@ definitions:
       lastName:
         type: string
         description: user last name
-  Login:
+  Login: #Définition de l'objet utilisé pour la requête de login
     properties:
       email:
         type: string
@@ -371,7 +371,7 @@ definitions:
       password:
         type: string
         description: user password
-  ApiResponse:
+  ApiResponse: #Définition d'un objet de réponse générique de l'A
     type: object
     properties:
       status:
@@ -385,7 +385,7 @@ definitions:
             type: string
           email:
             type: string
-  LoginResponse:
+  LoginResponse:  # Définition de l'objet de réponse pour un login réussi
     type: object
     properties:
       token:

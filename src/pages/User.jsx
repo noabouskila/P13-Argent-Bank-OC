@@ -21,7 +21,7 @@ function User() {
     // selectionner l'etat d'authentification depuis le store de redux
     const token = useSelector((state) => state.auth.token);
 
-    // selectionner l'etat des infos du user depuis led store de redux
+    // selectionner l'etat des infos du user depuis le store de redux
     const user = useSelector((state) => state.userDetails.user);
 
 

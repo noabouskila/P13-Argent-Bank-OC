@@ -14,7 +14,7 @@ const App = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
 
-  // verifier et charger le token  : dauthentification 
+  // verifier et charger le token  : dauthentification lors du montage initial du composant App
   useEffect(() => {
     dispatch(checkAuth());
     setLoading(false);
